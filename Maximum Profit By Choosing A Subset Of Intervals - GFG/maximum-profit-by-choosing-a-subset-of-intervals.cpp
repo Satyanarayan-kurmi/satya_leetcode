@@ -29,6 +29,7 @@ class Solution {
         for(int i=0;i<n;i++){
             vec.push_back({intervals[i][1],intervals[i][0],intervals[i][2]});
         }
+        int ans=INT_MIN;
         sort(vec.begin(),vec.end());
         vector<int> arr;
         for(int i=0;i<n;i++){
@@ -43,12 +44,10 @@ class Solution {
                 dp[i]=max(dp[i],dp[i-1]);
             // cout<<dp[i]<<" ";
             arr.push_back(vec[i][0]);
-            
+            ans=max(ans,dp[i]);
         }
         
-        int ans=INT_MIN;
-        for(int i=0;i<n;i++)
-            ans=max(ans,dp[i]);
+        
         return ans;
     }
 };
